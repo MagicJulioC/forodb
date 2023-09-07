@@ -12,7 +12,7 @@
         <div class="col text-center">
             <div class="card mt-3">
                 <div class="card-header">
-                    Inicio de sesión
+                    Registro de usuario
                 </div>
                 <div class="card-body">
                     <div class="input-group">
@@ -28,17 +28,20 @@
                         <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="pass">
                     </div>
                 </div>
+                <div class="alert alert-danger" role="alert" *ngIf="showConfirm">
+                    Correo registrado exitosamente.
+            </div>
                 <div class="alert alert-danger" role="alert" *ngIf="showError">
-                        Error de usuario y/o contraseña
+                        Este correo ya existe.
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-primary float-end" value="Entrar" (click)="login()">
+                    <button class="btn btn-primary float-end" value="Entrar" (click)="register()">
                         <div class="spinner-border text-ligth" role="status" *ngIf="showLoading"></div>
                         Entrar
                     </button>                    
                 </div>
             </div>
-            <a href="/signup" class="link-success">Registrarse</a>
+            <a href="/login" class="link-success">Volver</a>
         </div>
         <div class="col"></div>
     </div>

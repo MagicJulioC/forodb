@@ -3,20 +3,22 @@ import { Router } from '@angular/router';
 import { ApiRestService } from '../api-rest.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent {
-  email:String =""
+export class RegisterComponent {
+  email =""
   pass=""
   showError = false
   showLoading=false
+  showConfirm = false
   constructor(private router: Router,private api:ApiRestService){}
-  login(){
-    this.api.login(this.email,this.pass).subscribe({
+  register(){
+    this.api.register(this.email,this.pass).subscribe({
       next:respuesta =>{
-        this.router.navigate(['/home'])
+        this.showConfirm = true
+        this.router.navigate(['/login'])
       },
       error:errores =>{
         this.showError=true
