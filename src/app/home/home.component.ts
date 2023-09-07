@@ -19,7 +19,7 @@ export class HomeComponent {
   consulta(){
     this.api.getAllPreguntas().subscribe({
       next:datos=>{
-
+        console.log(datos)
       },
       error:errores=>{
 
