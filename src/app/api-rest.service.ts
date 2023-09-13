@@ -16,10 +16,24 @@ export class ApiRestService {
       return this.http.post(this.urlRegister,{"email":email,"password":pass,"returnSecureToken":true})
     }
   getAllPreguntas(){
-      return this.http.get(this.url + "preguntas")
+      return this.http.get<any>(this.url + "preguntas?pageSize=100")
   }
   createPregunta(categoria: string, correo: string,pregunta:string,fecha:string){
-    return this.http.post(this.url + "preguntas",{})
+    const newDoc ={"fields": {
+      "pregunta": {
+        "stringValue": pregunta
+      },
+      "categoria": {
+        "stringValue": categoria
+      },
+      "correo": {
+        "stringValue": correo
+      },
+      "fecha": {
+        "timestampValue": fecha
+      }
+    },}
+    return this.http.post(this.url + "preguntas",newDoc)
   }
   updatePregunta(categoria: string, correo: string,pregunta:string,fecha:string,id:string){
     return this.http.patch(this.url + "preguntas",{})

@@ -8,14 +8,16 @@ import { ApiRestService } from '../api-rest.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email:String =""
+  email:string =""
   pass=""
   showError = false
   showLoading=false
   constructor(private router: Router,private api:ApiRestService){}
   login(){
+    this.showLoading = true
     this.api.login(this.email,this.pass).subscribe({
       next:respuesta =>{
+        localStorage.setItem("correo",this.email);
         this.router.navigate(['/home'])
       },
       error:errores =>{

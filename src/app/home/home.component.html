@@ -1,9 +1,24 @@
 <p>home works!</p>
 <div class="container">
     <div class="row">
+        <div class="col"></div>
         <div class="col">
-
+            <div class="card">
+                <div class="card-header">Agregar pregunta</div>
+                <div class="body">
+                    <select class="form-select" [(ngModel)]="newP.categoria">
+                        <option value="Genera1">Genera1</option>
+                        <option value="Programacion">Programacion</option>
+                        <option value="Redes">Redes</option>
+                    </select>
+                    <input type="text" class="form-control mt-1" [(ngModel)]="newP.pregunta">
+                    <button class="btn btn-outline-primary float-end mt-3" (click)="crearPregunta()">
+                        <i class="bi bi-cloud-upload"></i>
+                    </button>
+                </div>
+            </div>
         </div>
+        <div class="col"></div>
     </div>
     <div class="row">
         <div class="col">
@@ -12,19 +27,21 @@
                     <tr>
                         <th>No</th>
                         <th>Tema</th>
+                        <th>Uuario</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let p of preguntas">
-                        <td>{{p.id}}</td>
+                        <td>{{p.no}}</td>
                         <td>{{p.pregunta}}</td>
+                        <td>{{p.correo}}</td>
                         <td>
                             <button class="btn btn-outline-secondary"><i class="bi bi-eyeglasses"></i></button>
                             &nbsp;
                             <button class="btn btn-outline-success"><i class="bi bi-pencil-fill"></i></button>
                             &nbsp;
-                            <button class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button>
+                            <button class="btn btn-outline-danger" (click)="borrarPregunta(p.id)"><i class="bi bi-trash-fill"></i></button>
                         </td>
                     </tr>
                 </tbody>
